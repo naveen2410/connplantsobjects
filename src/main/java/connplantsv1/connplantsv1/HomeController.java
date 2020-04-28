@@ -82,11 +82,13 @@ public class HomeController {
 	  @PostConstruct
 	    public void init() throws Exception {
 		  
-		  List<MIISchJob> listMIISchJobs = new ArrayList<MIISchJob>();
-		  
-		//DisplayMIISchJob displayMIIjob = new DisplayMIISchJob();
-		  ShowMIISchJobList displayMIIjob = new ShowMIISchJobList();
-		  displayMIIjob.displayMIISchJobs(listMIISchJobs);
+		/*
+		 * List<MIISchJob> listMIISchJobs = new ArrayList<MIISchJob>();
+		 * 
+		 * //DisplayMIISchJob displayMIIjob = new DisplayMIISchJob(); ShowMIISchJobList
+		 * displayMIIjob = new ShowMIISchJobList();
+		 * displayMIIjob.displayMIISchJobs(listMIISchJobs);
+		 */
 		  
 	  }
 	  
