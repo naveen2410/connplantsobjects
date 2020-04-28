@@ -1,4 +1,4 @@
-package connplantsv1.connplantsv1.domain;
+package connplantsv1.connplantsv1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

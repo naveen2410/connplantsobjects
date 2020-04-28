@@ -13,22 +13,20 @@
  *  implied.  See the License for the specific language governing
  *  permissions and limitations under the License.
  */
-package connplantsv1.connplantsv1.domain;
+package connplantsv1.connplantsv1;
 
-import java.net.InetAddress;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import connplantsv1.connplantsv1.domain.IPAddress;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+@Configuration
+@ComponentScan
+@EnableAutoConfiguration
+public class App {
 
-@RestController
-public class IPAddressController {
-
-    private int counter;
-
-    @RequestMapping(value = "/ip", method = RequestMethod.GET)
-    public IPAddress ipaddress() throws Exception {
-        return new IPAddress(++counter, InetAddress.getLocalHost().getHostAddress());
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
     }
+
 }

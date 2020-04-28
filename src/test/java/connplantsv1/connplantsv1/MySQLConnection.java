@@ -1,27 +1,31 @@
-package connplantsv1.connplantsv1.domain;
+package connplantsv1.connplantsv1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MSSQLConnection {
+public class MySQLConnection {
 
-	private static final String jdbcDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	//private static final String jdbcDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	private static final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
+	
 	
 	//private static final String dbURL = "jdbc:sqlserver://localhost:1433;databasename=SOMDB";
 	//private static final String dbURL = "jdbc:sqlserver://192.168.1.102:1433;databasename=SOMDB";
-	private static final String dbURL = "jdbc:sqlserver://9.81.193.106:1433;databasename=SOMDB";
+	//private static final String dbURL = "jdbc:sqlserver://9.81.193.106:1433;databasename=SOMDB";
 	//private static final String dbURL = "jdbc:sqlserver://10.116.65.81:1433;databasename=PlasticResin";
+	private static final String dbURL = "jdbc:mysql://smmtconn:3306/smmtdb";
+	//jdbc:mysql://mysql:3306/sampledb?user=root&password=hDgjFKdKO8avDhBt&useSSL=false
 	
 	
-	private static final String user = "som_sa"; 
-	private static final String pass = "password@12345";
+	//private static final String user = "som_sa"; 
+	//private static final String pass = "password@12345";
 	
-	//private static final String user = "xmii_user"; 
-	//private static final String pass = "mii@1234";
+	private static final String user = "root"; 
+	private static final String pass = "IwfGUwTxbE1jwvVa";
 	
-	private static final String dbURLwithUserPswd = dbURL + ";user=" + user + ";password=" + pass;
+	private static final String dbURLwithUserPswd = dbURL + "?user=" + user + "&password=" + pass + "&useSSL=false";
 	
 	private static final String ID = "X";
 	private static final String FName = "A";
@@ -41,8 +45,8 @@ public class MSSQLConnection {
 		// TODO Auto-generated method stub
 
 		System.out.println("Program started");
-		MSSQLConnection msserverCon = new MSSQLConnection();
-		msserverCon.dbConn(user, pass);
+		MySQLConnection myserverCon = new MySQLConnection();
+		myserverCon.dbConn(user, pass);
 		//msserverCon.insertNewEmp(ID,FName,LName);
 		//msserverCon.insertMIISchData(SchID,SchName,BLSPath,Pattern);
 		//msserverCon.insertDummyData(Status,ErrMsg);
@@ -80,7 +84,7 @@ public class MSSQLConnection {
 
 	}
 	
-	public String insertMIISchData(String schid2, String schname2, String blspath2, String pattern2) {
+	public String insertMIISchData(String site, String shoporder, String item, String qty_to_build, String qty_done, String qty_scrapped, String modified_dt) {
 		String returnMsg = "" ;
 		
 	    try
@@ -92,7 +96,7 @@ public class MSSQLConnection {
 	      
 	      Statement stmt = databaseConnection.createStatement();
  
-	      insertTableMIISch(stmt,schid2, schname2, blspath2, pattern2);
+	      insertTableMIISch(stmt, site, shoporder, item, qty_to_build, qty_done, qty_scrapped, modified_dt);
 	      
 	      System.out.println("Closing database connection");
 	    }
@@ -197,9 +201,9 @@ public class MSSQLConnection {
 		System.out.println("A new record is recorded successfully!");
 	}
 	
-	private void insertTableMIISch(Statement stmt, String schidIn, String schnameIn, String blspathIn, String patternIn) throws SQLException {
+	private void insertTableMIISch(Statement stmt,String site, String shoporder, String item, String qty_to_build, String qty_done, String qty_scrapped, String modified_dt) throws SQLException {
 		
-		String sql = "INSERT MIISchedulerJobs VALUES ('"+schidIn+"','"+schnameIn+"','"+blspathIn+"','"+patternIn+"')";
+		String sql = "INSERT SHOP_ORDER VALUES ('"+site+"','"+shoporder+"','"+item+"','"+qty_to_build+"','"+qty_done+"','"+qty_scrapped+"','"+modified_dt+"')";
 		
 		stmt.execute(sql);
 		
