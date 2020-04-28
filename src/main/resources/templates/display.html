@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>MII Scheduler Job Details</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+ 
+<body bgcolor="#99ebff">
+ <div class="" style="width:100%" align="center">  
+	<h2>Shop Order List</h2>
+	<div class="row col-md-7 table-responsive" style="width:100%">
+		<table id="MIISchJobTable" class="table" style="width:100%">
+			<thead>
+				<tr>
+					<th>Site</th>
+					<th>Shop Order</th>
+					<th>Item</th>
+					<th>Qty To Buid</th>
+					<th>Qty Done</th>
+					<th>Qty Scrapped</th>
+					<th>Modified Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				 <tr th:each="miischjob, rowStat: ${miischjobs}"
+				 	 th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+			        
+					<td th:text="${miischjob.site}">Jack</td>
+			        <td th:text="${miischjob.shoporder}">23</td>
+			        <td th:text="${miischjob.item}">Jack</td>
+			        <td th:text="${miischjob.qty_to_build}">23</td>
+			        <td th:text="${miischjob.qty_done}">23</td>
+			        <td th:text="${miischjob.qty_scrapped}">23</td>
+			        <td th:text="${miischjob.modified_dt}">23</td>
+			        
+			        
+			 
+			        
+			    </tr>
+			</tbody>
+		</table>
+
+	</div>
+  </div>
+ 
+</body>
+</html>
